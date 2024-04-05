@@ -1,0 +1,5 @@
+pipeline:
+  - property.tag.put:
+      path: global/app/io.pipeforce.testwf/workflow/testwf-workflow
+      name: workflow.prefix
+      value: AAAA
