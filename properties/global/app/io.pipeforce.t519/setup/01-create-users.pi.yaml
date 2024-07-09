@@ -1,0 +1,64 @@
+headers:
+  description: "Creates the IAM roles, groups for this app."
+  runWhen: "#{not @instance.profiles().contains('test')}"
+  onCommandError: IGNORE
+
+pipeline:
+
+  - iam.run.as:
+      username: "systemuser"
+
+  - iam.role.create:
+      name: "CAN_APP_IO.PIPEFORCE.T519"
+      
+  - iam.role.create:
+      name: "CAN_APP_VIEW_IO.PIPEFORCE.T519"
+
+  # Ticket initiator
+  - iam.group.create:
+      name: "TASK_CREATOR"
+  - iam.group.add.roles:
+      groupName: "TASK_CREATOR"
+      roleNames: "CAN_APP_IO.PIPEFORCE.T519, CAN_APP_VIEW_IO.PIPEFORCE.T519, CAN_SERVICE_WORKFLOW, ROLE_APPS_MINIMAL, CAN_FTR_workflow_tasksearch, CAN_PIPE_workflow.%"
+
+
+  # Ticket responder
+  - iam.group.create:
+      name: "TASK_RESPONDER"
+  - iam.group.add.roles:
+      groupName: "TASK_RESPONDER"
+      roleNames: "CAN_APP_IO.PIPEFORCE.T519, CAN_APP_VIEW_IO.PIPEFORCE.T519, CAN_SERVICE_WORKFLOW, ROLE_APPS_MINIMAL, CAN_FTR_workflow_tasksearch, CAN_PIPE_workflow.%"
+      
+      
+  - iam.group.create:
+      name: "TASK_OUTSIDER"
+  - iam.group.add.roles:
+      groupName: "TASK_OUTSIDER"
+      roleNames: "CAN_APP_IO.PIPEFORCE.T519, CAN_APP_VIEW_IO.PIPEFORCE.T519, CAN_SERVICE_WORKFLOW, ROLE_APPS_MINIMAL, CAN_FTR_workflow_tasksearch, CAN_PIPE_workflow.%"    
+  
+  # Users
+  - iam.user.create:
+      name: "task_creator_1"
+      password: "task_creator_1pwd"
+      email: "tester+task_creator_1@pipeforce.dev"
+      firstName: "fntc1"
+      lastName: "lntc1"
+      groupNames: "TASK_CREATOR,Employee (Standard),service-workflow-user"   
+      
+      
+  - iam.user.create:
+      name: "task_responder_1"
+      password: "task_responder_1pwd"
+      email: "tester+task_responder_1@pipeforce.dev"
+      firstName: "fntr1"
+      lastName: "lntr1"
+      groupNames: "TASK_RESPONDER,Employee (Standard),service-workflow-user"  
+      
+  
+  - iam.user.create:
+      name: "task_outsider_1"
+      password: "task_outsider_1pwd"
+      email: "tester+task_outsider_1@pipeforce.dev"
+      firstName: "fntr1"
+      lastName: "lntr1"
+      groupNames: "TASK_OUTSIDER,Employee (Standard),service-workflow-user"      

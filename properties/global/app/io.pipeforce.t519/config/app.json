@@ -1,5 +1,20 @@
 {
-  "title": "io.pipeforce.t519",
-  "description": "",
-  "icon": "question_mark"
+	"title": "io.pipeforce.t519",
+	"description": "",
+	"icon": "question_mark",
+	"color": "brown-8",
+	"tags": [
+		"io.pipeforce.t519"
+	],
+	"permissions": {
+		"read": [
+			"CAN_APP_IO.PIPEFORCE.T519"
+		],
+		"view": [
+			"CAN_APP_VIEW_IO.PIPEFORCE.T519"
+		]
+	},
+	"editions": [
+		"enterprise"
+	]
 }

@@ -1,0 +1,22 @@
+headers:
+  description: "Start workflow for this app."
+  runWhen: "#{not @instance.profiles().contains('test')}"
+  onCommandError: IGNORE
+
+pipeline:
+
+  - iam.authorize:
+      username: task_creator_1
+      password: task_creator_1pwd
+
+  - workflow.start:
+      key: io.pipeforce.t519_workflow-t519
+      variables: "#{{
+                     'CANDIDATE_GROUP_NAME': 'TASK_RESPONDER'
+                  }}"
+                  
+  - workflow.start:
+      key: io.pipeforce.t519_workflow-t519
+      variables: "#{{
+                     'CANDIDATE_GROUP_NAME': 'TASK_OUTSIDER'
+                  }}"                

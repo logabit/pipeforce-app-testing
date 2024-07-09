@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:pi="http://pipeforce.io/schema/bpmn" id="Definitions_1ltbcnm" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="io.pipeforce.t519_workflow-t519" name="workflow-t519" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1jjxns6</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1jjxns6" sourceRef="StartEvent_1" targetRef="Activity_02ogp5j" />
+    <bpmn:sequenceFlow id="Flow_0beg024" sourceRef="Activity_02ogp5j" targetRef="Activity_03h5nxs" />
+    <bpmn:endEvent id="Event_1mey7sy">
+      <bpmn:incoming>Flow_150c7hu</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_150c7hu" sourceRef="Activity_03h5nxs" targetRef="Event_1mey7sy" />
+    <bpmn:userTask id="Activity_02ogp5j" name="Ticket Responder Stage 1" camunda:candidateGroups="${CANDIDATE_GROUP_NAME}">
+      <bpmn:documentation>Stage 1</bpmn:documentation>
+      <bpmn:incoming>Flow_1jjxns6</bpmn:incoming>
+      <bpmn:outgoing>Flow_0beg024</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_03h5nxs" name="Ticket Responder Stage 2" camunda:candidateGroups="${CANDIDATE_GROUP_NAME}">
+      <bpmn:documentation>Stage 2</bpmn:documentation>
+      <bpmn:incoming>Flow_0beg024</bpmn:incoming>
+      <bpmn:outgoing>Flow_150c7hu</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="io.pipeforce.t519_workflow-t519">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="79" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1mey7sy_di" bpmnElement="Event_1mey7sy">
+        <dc:Bounds x="592" y="79" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0un79mn_di" bpmnElement="Activity_02ogp5j">
+        <dc:Bounds x="270" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ooxbho_di" bpmnElement="Activity_03h5nxs">
+        <dc:Bounds x="430" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1jjxns6_di" bpmnElement="Flow_1jjxns6">
+        <di:waypoint x="215" y="97" />
+        <di:waypoint x="270" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0beg024_di" bpmnElement="Flow_0beg024">
+        <di:waypoint x="370" y="97" />
+        <di:waypoint x="430" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_150c7hu_di" bpmnElement="Flow_150c7hu">
+        <di:waypoint x="530" y="97" />
+        <di:waypoint x="592" y="97" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
