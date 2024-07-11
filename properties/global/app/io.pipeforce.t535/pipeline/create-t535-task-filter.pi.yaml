@@ -1,0 +1,18 @@
+pipeline:
+  - workflow.filter.put:
+      resourceName: Task
+      name: All t535 Tasks
+      query:
+        assignee: $uri:current-user
+      properties:
+        pipeforce_sql: |
+          -- Content-Type: application/json
+          SELECT
+            json_build_object('id', id_, 'name', name_, 'assignee', assignee_)
+          FROM
+            ACT_HI_TASKINST
+          WHERE
+            name_ LIKE :quickSearch AND assignee_ = :assignee
+          ORDER BY
+            start_time_
+          LIMIT :maxParam OFFSET :offsetParam ;
