@@ -1,0 +1,10 @@
+pipeline:
+
+  - iam.run.as:
+      username: "systemuser"
+
+  - iam.group.create:
+      name: group-t519
+
+  - iam.user.add.groups:
+      groupNames: group-t519
