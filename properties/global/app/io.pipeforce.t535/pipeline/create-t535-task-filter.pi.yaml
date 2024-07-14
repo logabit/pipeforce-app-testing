@@ -8,11 +8,15 @@ pipeline:
         pipeforce_sql: |
           -- Content-Type: application/json
           SELECT
-            json_build_object('id', id_, 'name', name_, 'assignee', assignee_)
+            json_build_object('id', id_, 'name', name_, 'assignee', assignee_, 'processInstanceId', 
+            proc_inst_id_, 'processDefinitionId', proc_def_id_, 'description', description_, 
+            'taskDefinitionKey', task_def_key_, 'owner', owner_, 'delegation', delegation_, 
+            'prioritiy', priority_, 'created', create_time_, 'due', due_date_, 'followUp', follow_up_date_, 
+            'suspended', suspension_state_, 'tenantId', tenant_id_)
           FROM
-            ACT_HI_TASKINST
+            ACT_RU_TASK
           WHERE
             name_ LIKE :quickSearch AND assignee_ = :assignee
           ORDER BY
-            start_time_
+            create_time_
           LIMIT :maxParam OFFSET :offsetParam ;
