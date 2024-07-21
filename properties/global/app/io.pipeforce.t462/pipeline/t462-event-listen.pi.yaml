@@ -1,0 +1,8 @@
+pipeline:
+
+  # Listen to all property creations insde this app
+  - event.listen:
+      key: "property.created"
+      filter: "${body.payload.target.path.contains('global/app/io.pipeforce.t462/')}"
+
+  - log: "t462: Listener fired because new property created: ${body.payload.target.path}"

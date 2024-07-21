@@ -1,0 +1,16 @@
+{
+  "includeTopics": [
+    "pipeforce.event.iam.#"
+  ],
+  "excludeTopics": [
+    "pipeforce.event.iam.admin.create.realm.role",
+    "pipeforce.event.iam.client.login",
+    "pipeforce.event.iam.refresh.token",
+    "pipeforce.event.iam.code.to.token"
+  ],
+  "headers": {
+    "bcc": [
+      "$uri:group:Developer (Standard)"
+    ]
+  }
+}

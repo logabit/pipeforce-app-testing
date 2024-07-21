@@ -1,0 +1,5 @@
+pipeline:
+  - job:
+      schedule: EVERY_5_MIN
+
+  - log: "t462: Pipeline job executed"

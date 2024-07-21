@@ -1,0 +1,22 @@
+{
+  "title": "io.pipeforce.t462",
+  "description": "",
+  "icon": "assignment",
+  "color": "brown-8",
+  "tags": [
+    "io.pipeforce.t462"
+  ],
+  "permissions": {
+    "read": [
+      "ROLE_DEVELOPER",
+      "CAN_APP_io.pipeforce.t462"
+    ],
+    "view": [
+      "ROLE_DEVELOPER",
+      "CAN_APP_io.pipeforce.t462"
+    ]
+  },
+  "editions": [
+    "enterprise"
+  ]
+}
